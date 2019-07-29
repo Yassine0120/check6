@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="Formation/css/style.css">
+    <title>checkpoint</title>
+    <link rel="stylesheet" href="Formation/css/style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <img height="50px" width="50px" class="photo" src="./Formation/res/section2GMCLogo.png" />
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="index.html">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+<div>
+  <center>
+    <div class="title">
+<h1>CONTACT</h1>
+</div>
+</center>
+</div>
+<center>
+    <form id="contactForm" action="/action_page.php" class="frm">
+      <div class="form-group">
+        <label for="text">Your Name</label>
+        <input type="text" class="form-control" id="name" name="name">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Track</label>
+        <select class="form-control" id="Abdo" name="Abdo">
+          <option>Web</option>
+          <option>Gaming</option>
+          <option>AI</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="email">Email adress</label>
+        <input type="email" class="form-control" id="email" id="email">
+      </div>
+      <div class="form-group">
+        <label for="number">Phone number</label>
+        <input type="number" class="form-control" id="phone" name="phone">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</body>
+<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
+<script>
+ var firebaseConfig = {
+    apiKey: "AIzaSyCzL7aESsFqfhY8iUBOuYPI2nJxMS_572U",
+    authDomain: "mypro-3a2d3.firebaseapp.com",
+    databaseURL: "https://mypro-3a2d3.firebaseio.com",
+    projectId: "mypro-3a2d3",
+    storageBucket: "",
+    messagingSenderId: "680843979805",
+    appId: "1:680843979805:web:af32c890ddfe0c2e"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var messagesRef = firebase.database().ref('mypro-3a2d3');
+  function submitForm(e){
+e.preventDefault();
+var name = document.getElementById('name').value
+var Abdo = document.getElementById('Abdo').value
+var email = document.getElementById('email').value
+var phone = document.getElementById('phone').value
+var pwd = document.getElementById('pwd').value
+saveMessage(name,Abdo,email,phone);
+}
+document.getElementById('contactForm').addEventListener('submit', submitForm)
+function saveMessage(name,Abdo,email,phone){
+var newMessageRef = messagesRef.push();
+newMessageRef.set({
+name : name,
+email : email,
+phone : phone,
+Abdo : Abdo,
+}); }
+</script>
+</html>
